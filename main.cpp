@@ -25,10 +25,10 @@ int main() {
         return 1;
     }
 
-    uintptr_t offset1 = 0x1824A18;  // first offset
-    uintptr_t offset2 = 0x13A8;  // second offset
+    uintptr_t dwLocalPlayerPawn = 0x1824A18;  // first offset
+    uintptr_t m_iIDEntIndex = 0x13A8;  // second offset
 
-    uintptr_t firstPointerAddress = baseAddress + offset1;
+    uintptr_t firstPointerAddress = baseAddress + dwLocalPlayerPawn;
     uintptr_t actualAddress;
 
     // Read the first pointer
@@ -37,14 +37,14 @@ int main() {
         return 1;
     }
 
-    uintptr_t entityIDAddress = actualAddress + offset2;
+    uintptr_t entityIDAddress = actualAddress + m_iIDEntIndex;
 
     bool triggerbotEnabled = false;
 
     std::cout << "Press LEFT ALT to toggle triggerbot on/off." << std::endl;
 
     while (true) {
-        // Check if Shift key is pressed
+        // Check if alt key is pressed
         if (GetAsyncKeyState(VK_MENU) & 0x8000) {
             triggerbotEnabled = !triggerbotEnabled;
             std::cout << "Triggerbot " << (triggerbotEnabled ? "enabled" : "disabled") << std::endl;
